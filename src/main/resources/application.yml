@@ -1,0 +1,21 @@
+jwt:
+  secret: joelVianny
+  lifetime: 30m
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/security
+    username: security
+    password: security
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+

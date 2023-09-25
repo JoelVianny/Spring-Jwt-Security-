@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  db:
+    image: 'postgres:latest'
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=security
+      - POSTGRES_DB=security
+      - POSTGRES_PASSWORD=security
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    working_dir:  /app
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/security
+      - SPRING_DATASOURCE_USERNAME=security
+      - SPRING_DATASOURCE_PASSWORD=security
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - UPLOAD_PATH=/home/media/files
+    ports:
+      - "8080:8080"
